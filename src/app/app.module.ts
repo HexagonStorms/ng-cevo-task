@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CategoryComponent } from './category/category.component';
-import { AreaComponent } from './area/area.component';
-import { SubAreaComponent } from './subArea/subArea.component';
-import { ChildComponent } from './child/child.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { AreaComponent } from './pages/area/area.component';
+import { SubAreaComponent } from './pages/subArea/subArea.component';
+import { ChildComponent } from './pages/child/child.component';
+
+import { NavigationService } from "./services/navigation.service";
 
 const appRoutes: Routes = [
     {
@@ -46,7 +48,9 @@ const appRoutes: Routes = [
         BrowserModule,
         RouterModule.forRoot(appRoutes)
     ],
-    providers: [],
+    providers: [
+        NavigationService
+    ],
     // entryComponents: [
     //     HomeComponent,
     //     CategoryComponent,

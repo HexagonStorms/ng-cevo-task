@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-// import $ from 'jquery/dist/jquery.min.js';
-// import 'bootstrap-sass/assets/javascripts/bootstrap.min.js';
+import { NavigationService } from "./services/navigation.service";
 
 
 @Component({
@@ -337,6 +336,8 @@ export class AppComponent {
         }
         ]
     }];
+    
+    constructor(private navigationService: NavigationService) {}
     
     goToCategory(categoryId) {
         console.log('categoryId: ' + categoryId);
