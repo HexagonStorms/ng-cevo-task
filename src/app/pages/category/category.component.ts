@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
     selector: 'app-category',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CategoryComponent {
 	
+	constructor(private navigationService: NavigationService) {}
+	
+	routes = this.navigationService.routes;
 }

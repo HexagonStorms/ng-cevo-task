@@ -341,6 +341,7 @@ export class AppComponent {
     
     goToCategory(categoryId) {
         console.log('categoryId: ' + categoryId);
+        // CALL NAVIGATION SERVICE FUNCTION
     }
     
     goToArea(categoryId, areaId) {
