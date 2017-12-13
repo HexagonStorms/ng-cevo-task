@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from "./services/navigation.service";
-
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -337,11 +337,13 @@ export class AppComponent {
         ]
     }];
     
-    constructor(private navigationService: NavigationService) {}
+    constructor(
+        private navigationService: NavigationService,
+        private router: Router) {}
     
     goToCategory(categoryId) {
         console.log('categoryId: ' + categoryId);
-        // CALL NAVIGATION SERVICE FUNCTION
+        // this.navigationService.sendMessage('Message from Home Component to App Component!');
     }
     
     goToArea(categoryId, areaId) {

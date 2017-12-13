@@ -1,35 +1,60 @@
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 
+
+@Injectable()
 export class NavigationService {
-	routes: any;
+	private subject = new Subject<any>();
 	
-	constructor(private router: Router) {}
+	sendMessage(message: string) {
+        this.subject.next({ text: message });
+    }
+ 
+    clearMessage() {
+        this.subject.next();
+    }
+ 
+    getMessage(): Observable<any> {
+        return this.subject.asObservable();
+    }
+	
+	category: number;
+	area: number;
+	subArea: number;
+	child: number;
+	
+	// constructor(private router: Router) {}
 
 	public navigateToCategory(categoryId) {
-    	this.routes.category = categoryId;
-    	this.router.navigateByUrl(categoryId);
+    	this.category = categoryId;
+    	console.log(this);
+    	// this.router.navigateByUrl(categoryId);
     }
     
     public navigateToArea(categoryId, areaId) {
-	    this.routes.category = categoryId;
-	    this.routes.area = areaId;
-	    this.router.navigateByUrl(categoryId + "/" + areaId);
+	    this.category = categoryId;
+	    // this.area = areaId;
+	    // this.router.navigateByUrl(categoryId + "/" + areaId);
 	};
 	
 	public navigateToSubArea(categoryId, areaId, subAreaId) {
-	    this.routes.category = categoryId;
-	    this.routes.area = areaId;
-	    this.routes.subArea = subAreaId;
-	    this.router.navigateByUrl(categoryId + "/" + areaId + "/" + subAreaId);
+	    this.category = categoryId;
+	    this.area = areaId;
+	    this.subArea = subAreaId;
+	    // this.router.navigateByUrl(categoryId + "/" + areaId + "/" + subAreaId);
 	};
 	
 	public navigateToChild(categoryId, areaId, subAreaId, childId) {
-	    this.routes.category = categoryId;
-	    this.routes.area = areaId;
-	    this.routes.subArea = subAreaId;
-	    this.routes.child = childId;
-	    this.router.navigateByUrl(categoryId + "/" + areaId + "/" + subAreaId + "/" + childId);
+	    this.category = categoryId;
+	    this.area = areaId;
+	    this.subArea = subAreaId;
+	    this.child = childId;
+	    // this.router.navigateByUrl(categoryId + "/" + areaId + "/" + subAreaId + "/" + childId);
 	};
+	
+	public getParams() {
+        return this;
+    }
 
 }

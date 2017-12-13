@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/#!/">
+        <a class="navbar-brand" routerLink="/">
             <img alt="Brand" src="/assets/img/jp_logo.png" id="brand-logo">
         </a>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -14,8 +14,8 @@
             <li *ngFor="let category of navigation" [class.dropdown]="category.areas.length > 0">
 
                 <!-- CATEGORIES -->
-                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span (click)="goToCategory(category.id)">{{category.title}}</span>
+                <a routerLink="/{{ category.id }}" data-toggle="dropdown" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false">
+                    <span>{{category.title}}</span>
                     <span class="caret"></span>
                 </a>
 
@@ -23,7 +23,7 @@
                     <li *ngFor="let area of category.areas" [class.dropdown-submenu]="area.sub_areas.length > 0">
 
                         <!-- AREAS -->
-                        <a href="javascript:void(0)" (click)="goToArea(category.id, area.id)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
+                        <a routerLink="/{{ category.id }}/{{ area.id}}" (click)="goToArea(category.id, area.id)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
                             {{area.title}}
                         </a>
 
@@ -31,13 +31,13 @@
 
                             <!-- SUBAREAS -->
                             <li [class.dropdown-submenu]="subArea.children.length > 0" *ngFor="let subArea of area.sub_areas">
-                                <a href="javascript:void(0)" (click)="goToSubArea(category.id, area.id, subArea.id)">{{subArea.title}}</a>
+                                <a routerLink="/{{ category.id}}/{{ area.id }}/{{ subArea.id}}" (click)="goToSubArea(category.id, area.id, subArea.id)">{{subArea.title}}</a>
 
                                 <ul class="dropdown-menu" *ngIf="subArea.children.length > 0">
 
                                     <!-- CHILDREN -->
                                     <li *ngFor="let child of subArea.children">
-                                        <a href="javascript:void(0)" (click)="goToChild(category.id, area.id, subArea.id, child.id)">{{child.title}}</a>
+                                        <a routerLink="/{{ category.id}}/{{ area.id }}/{{ subArea.id}}/{{ child.id}}" (click)="goToChild(category.id, area.id, subArea.id, child.id)">{{child.title}}</a>
                                     </li>
                                 </ul>
                             </li>

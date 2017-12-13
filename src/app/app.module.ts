@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -49,15 +50,9 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes)
     ],
     providers: [
-        NavigationService
+        NavigationService,
+        {provide: LocationStrategy, useClass: PathLocationStrategy}
     ],
-    // entryComponents: [
-    //     HomeComponent,
-    //     CategoryComponent,
-    //     AreaComponent,
-    //     SubAreaComponent,
-    //     ChildComponent
-    // ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
