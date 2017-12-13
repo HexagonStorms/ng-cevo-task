@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
     selector: 'app-area',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AreaComponent {
 	
+	constructor(private navigationService: NavigationService) {}
 }

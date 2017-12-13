@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from "./services/navigation.service";
-import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-root',
@@ -338,23 +338,21 @@ export class AppComponent {
     }];
     
     constructor(
-        private navigationService: NavigationService,
-        private router: Router) {}
+        private navigationService: NavigationService) {}
     
     goToCategory(categoryId) {
-        console.log('categoryId: ' + categoryId);
-        // this.navigationService.sendMessage('Message from Home Component to App Component!');
+        this.navigationService.navigateToCategory(categoryId);
     }
     
     goToArea(categoryId, areaId) {
-        console.log('categoryId: ' + categoryId + ' | areaId: ' + areaId);
+        this.navigationService.navigateToArea(categoryId, areaId);
     }
     
     goToSubArea(categoryId, areaId, subAreaId) {
-        console.log('categoryId: ' + categoryId + ' | areaId: ' + areaId + ' | subAreaId: ' + subAreaId);
+        this.navigationService.navigateToSubArea(categoryId, areaId, subAreaId);
     }
     
     goToChild(categoryId, areaId, subAreaId, childId) {
-        console.log('categoryId: ' + categoryId + ' | areaId: ' + areaId + ' | subAreaId: ' + subAreaId + ' | childId: ' + childId);
+        this.navigationService.navigateToChild(categoryId, areaId, subAreaId, childId);
     }
 }

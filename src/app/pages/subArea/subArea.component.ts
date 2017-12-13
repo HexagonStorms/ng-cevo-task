@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
     selector: 'app-subArea',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class SubAreaComponent {
 	
+	constructor(private navigationService: NavigationService) {}
 }
