@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 
 
